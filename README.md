@@ -11,23 +11,26 @@ Hiltを単体テストに活用するための実験用プロジェクト。
 テスト用にHiltの依存、TestRunner、Robolectricを追加
 
 ```groovy
- # use Hilt in tests
+ // use Hilt in tests
  testImplementation 'com.google.dagger:hilt-android-testing:2.46.1'
  kaptTest 'com.google.dagger:hilt-android-compiler:2.46.1'
- # TestRunner
- testImplementation 'androidx.test:runner:1.5.2'
- # Robolectric
+ // TestRunner
+ testImplementation 'androidx.test.ext:junit:1.1.5'
+ // Robolectric
  testImplementation 'org.robolectric:robolectric:4.10.3'
 ```
 
 ## JUnit4
 
-`@Config` に `HiltTestApplication::class` を、`@RunWith` に `RobolectricTestRunner::class)` を指定する。
+`@Config` に `HiltTestApplication::class` を、`@RunWith` に `AndroidJUnit4::class)` を指定する。
 テストルールとして `HiltAndroidRule` を適用した上で、setup内で `inject` を呼び出す。
+Robolectricの仕組みを利用してConfigを設定するため、Robolectricが必要になる。
+RunnerはAndroidJUnit4ではなくRobolectricTestRunnerでも良い。
 
 ```kotlin
 package com.okuzawats.android.hilt.testing
 
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
@@ -38,7 +41,6 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import javax.inject.Inject
 
@@ -49,7 +51,7 @@ import javax.inject.Inject
  */
 @HiltAndroidTest
 @Config(application = HiltTestApplication::class)
-@RunWith(RobolectricTestRunner::class)
+@RunWith(AndroidJUnit4::class)
 class ExampleUnitTest {
 
     @get:Rule
