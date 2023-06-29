@@ -88,6 +88,7 @@ dependencies {
     androidTestImplementation 'com.google.dagger:hilt-android-testing:2.46.1'
     testImplementation 'androidx.test:runner:1.5.2'
     testImplementation 'org.robolectric:robolectric:4.10.3'
+    testImplementation 'androidx.test.ext:junit:1.1.5'
     testImplementation 'io.mockk:mockk:1.13.5'
     testImplementation 'io.mockk:mockk-android:1.13.5'
     testImplementation 'io.mockk:mockk-agent:1.13.5'
