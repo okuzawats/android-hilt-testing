@@ -22,7 +22,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        animal.bow()
+        // Productionは42
+        check(animal.bow() == 42)
 
         setContent {
             HiltTestingTheme {
