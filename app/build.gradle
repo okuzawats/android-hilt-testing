@@ -82,7 +82,7 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 
     implementation 'com.google.dagger:hilt-android:2.46.1'
-    kapt 'com.google.dagger:hilt-compiler:2.46.1'
+    kapt 'com.google.dagger:hilt-compiler:2.50'
     testImplementation 'com.google.dagger:hilt-android-testing:2.46.1'
     kaptTest 'com.google.dagger:hilt-android-compiler:2.46.1'
     androidTestImplementation 'com.google.dagger:hilt-android-testing:2.46.1'
